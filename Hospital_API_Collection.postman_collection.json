@@ -1,0 +1,404 @@
+{
+  "info": {
+    "_postman_id": "250c1348-9f97-445c-aa28-6642e64e245c",
+    "name": "My Collection",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56214433",
+    "_collection_link": "https://go.postman.co/collection/56214433-250c1348-9f97-445c-aa28-6642e64e245c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get Brands",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 2000ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response has brands\", function () {\r",
+              "    let jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.brands.length).to.be.above(0);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/brandsList",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "brandsList"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search Product",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response code is 200\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Products list is not empty\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.products.length).to.be.above(0);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "search_product",
+              "value": "top",
+              "type": "text",
+              "uuid": "c6b5ad87-596e-4d07-bedc-237f0b0f34a1"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/searchProduct",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "searchProduct"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response code is 404\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(404);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "email",
+              "value": "ali11072026@test.com",
+              "type": "text",
+              "uuid": "6287c6d5-b8f3-4421-9a3b-4d5680aaa85b"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "text",
+              "uuid": "5dcbfdcd-f0d7-4c47-9faa-e4659901ee7f"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/verifyLogin",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "verifyLogin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Register",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response code is 201\", function () {\r",
+              "    let jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.responseCode).to.eql(201);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"User created successfully\", function () {\r",
+              "    let jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.message).to.include(\"User created\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "Ali Mohamed",
+              "type": "text",
+              "uuid": "575210f2-5d33-444f-a33c-24539cc14ee7"
+            },
+            {
+              "key": "email",
+              "value": "ali11072026@test.com",
+              "type": "text",
+              "uuid": "5e05d593-6e20-473d-a305-16cdca80d20d"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "text",
+              "uuid": "94503d69-57f5-46e3-9c0f-406713b49bbe"
+            },
+            {
+              "key": "title",
+              "value": "Mr",
+              "type": "text",
+              "uuid": "08a002fe-9019-44c6-8d0e-a3db58757e78"
+            },
+            {
+              "key": "birth_date",
+              "value": "28",
+              "type": "text",
+              "uuid": "2c2ef7c1-01d0-4d0f-ba64-1806ca6d230d"
+            },
+            {
+              "key": "birth_month",
+              "value": "9",
+              "type": "text",
+              "uuid": "f630b7bf-400d-46a7-8011-ced0c35ae488"
+            },
+            {
+              "key": "birth_year",
+              "value": "2003",
+              "type": "text",
+              "uuid": "c56a4af4-f4b5-4c8d-bf6e-e14ae57628fd"
+            },
+            {
+              "key": "firstname",
+              "value": "Ali",
+              "type": "text",
+              "uuid": "97df0478-aa67-4501-8442-21aaa6a20f84"
+            },
+            {
+              "key": "lastname",
+              "value": "Mohamed",
+              "type": "text",
+              "uuid": "925056ee-853a-4f3e-80d9-61ecea47f7d1"
+            },
+            {
+              "key": "company",
+              "value": "DEPI",
+              "type": "text",
+              "uuid": "1c3d0837-17fa-40ff-bd7c-c047262dd29e"
+            },
+            {
+              "key": "address1",
+              "value": "Assiut",
+              "type": "text",
+              "uuid": "645cb128-0a55-4c24-977c-47e76800aadf"
+            },
+            {
+              "key": "country",
+              "value": "India",
+              "type": "text",
+              "uuid": "84a46311-9058-4b12-a838-7086184c4fa9"
+            },
+            {
+              "key": "zipcode",
+              "value": "71511",
+              "type": "text",
+              "uuid": "83e1789f-a898-4838-a2da-f38e3a8ce808"
+            },
+            {
+              "key": "state",
+              "value": "Assiut",
+              "type": "text",
+              "uuid": "dda86fc6-9894-41c7-86c8-cd02da5999aa"
+            },
+            {
+              "key": "city",
+              "value": "Assiut",
+              "type": "text",
+              "uuid": "410663f8-9b67-45e8-8665-e6d0c035b341"
+            },
+            {
+              "key": "mobile_number",
+              "value": "01012345678",
+              "type": "text",
+              "uuid": "65f699c8-26fe-45f3-9ffb-13e60e90bdf6"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/createAccount",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "createAccount"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update User",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Delete User",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "email",
+              "value": "ali11072026@test.com",
+              "type": "text",
+              "uuid": "f17feef8-562e-41a7-bfdc-ee52e33b8641"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "text",
+              "uuid": "f337cb65-1a52-473d-b660-e286039ac37a"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://automationexercise.com/api/deleteAccount",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "deleteAccount"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Products",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 2000ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response has products\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.products.length).to.be.above(0);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://automationexercise.com/api/productsList",
+          "protocol": "https",
+          "host": [
+            "automationexercise",
+            "com"
+          ],
+          "path": [
+            "api",
+            "productsList"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
